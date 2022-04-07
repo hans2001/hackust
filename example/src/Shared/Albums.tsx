@@ -5,6 +5,7 @@ import * as React from 'react';
 import {
   Dimensions,
   Image,
+  ImageBackground,
   Platform,
   ScaledSize,
   ScrollView,
@@ -12,34 +13,29 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Button } from 'react-native-paper';
 
-const COVERS = [
-  require('../../assets/album-art-01.jpg'),
-  require('../../assets/album-art-02.jpg'),
-  require('../../assets/album-art-03.jpg'),
-  require('../../assets/album-art-04.jpg'),
-  require('../../assets/album-art-05.jpg'),
-  require('../../assets/album-art-06.jpg'),
-  require('../../assets/album-art-07.jpg'),
-  require('../../assets/album-art-08.jpg'),
-  require('../../assets/album-art-09.jpg'),
-  require('../../assets/album-art-10.jpg'),
-  require('../../assets/album-art-11.jpg'),
-  require('../../assets/album-art-12.jpg'),
-  require('../../assets/album-art-13.jpg'),
-  require('../../assets/album-art-14.jpg'),
-  require('../../assets/album-art-15.jpg'),
-  require('../../assets/album-art-16.jpg'),
-  require('../../assets/album-art-17.jpg'),
-  require('../../assets/album-art-18.jpg'),
-  require('../../assets/album-art-19.jpg'),
-  require('../../assets/album-art-20.jpg'),
-  require('../../assets/album-art-21.jpg'),
-  require('../../assets/album-art-22.jpg'),
-  require('../../assets/album-art-23.jpg'),
-  require('../../assets/album-art-24.jpg'),
+const gif1 = [
+  require('../../assets/Shoe5.gif'),
+  require('../../assets/Shoe1.gif'),
+  // require('../../assets/Shoe3.gif'),
+  // require('../../assets/Shoe4.gif'),
+  // require('../../assets/ape1.jpg'),
+  // require('../../assets/ape2.jpg'),
+  // require('../../assets/album-art-13.jpg'),
 ];
 
+const gif2 = [
+  require('../../assets/Shoe3.gif'),
+  require('../../assets/Shoe4.gif'),
+];
+
+const img1 = [
+  require('../../assets/unnamed.gif'),
+  require('../../assets/ape2.jpg'),
+  // require('../../assets/game.jpg'),
+];
 export default function Albums(props: Partial<ScrollViewProps>) {
   const [dimensions, setDimensions] = React.useState(Dimensions.get('window'));
 
@@ -57,25 +53,68 @@ export default function Albums(props: Partial<ScrollViewProps>) {
 
   useScrollToTop(ref);
 
-  const itemSize = dimensions.width / Math.floor(dimensions.width / 150);
+  // const itemSize = dimensions.width;
 
   return (
     <ScrollView ref={ref} contentContainerStyle={styles.content} {...props}>
-      {COVERS.map((source, i) => (
-        <View
-          // eslint-disable-next-line react/no-array-index-key
-          key={i}
-          style={[
-            styles.item,
-            Platform.OS !== 'web' && {
-              height: itemSize,
-              width: itemSize,
-            },
-          ]}
-        >
-          <Image source={source} style={styles.photo} />
+      <View style={{ flexDirection: 'row' }}>
+        {img1.map((source, i) => (
+          <View
+            // eslint-disable-next-line react/no-array-index-key
+            key={i}
+          >
+            <TouchableOpacity onPress={() => console.log('motherfucker')}>
+              <Image source={source} style={{ width: 220 }} />
+            </TouchableOpacity>
+          </View>
+        ))}
+      </View>
+
+      <Image
+        source={require('../../assets/unnamed.jpg')}
+        style={{
+          position: 'absolute',
+          right: 0,
+          width: 192,
+          height: 220,
+          top: 300,
+        }}
+      />
+
+      <ImageBackground
+        source={require('../../assets/dark.jpg')}
+        resizeMode="cover"
+        style={{ width: 500 }}
+      >
+        {/* <Text style={styles.text}>Inside</Text> */}
+        {/* </ImageBackground> */}
+
+        <View style={{ flexDirection: 'row' }}>
+          {gif1.map((source, i) => (
+            <View
+              // eslint-disable-next-line react/no-array-index-key
+              key={i}
+            >
+              <TouchableOpacity onPress={() => console.log('motherfucker')}>
+                <Image source={source} style={styles.gif} />
+              </TouchableOpacity>
+            </View>
+          ))}
         </View>
-      ))}
+        <View style={{ flexDirection: 'row' }}>
+          {gif2.map((source, i) => (
+            <View
+              // eslint-disable-next-line react/no-array-index-key
+              key={i}
+            >
+              <TouchableOpacity onPress={() => console.log('motherfucker')}>
+                <Image source={source} style={styles.gif} />
+              </TouchableOpacity>
+            </View>
+          ))}
+        </View>
+      </ImageBackground>
+      {/* <Image ></Image> */}
     </ScrollView>
   );
 }
@@ -84,23 +123,26 @@ const styles = StyleSheet.create({
   ...Platform.select({
     web: {
       content: {
-        display: 'grid' as 'none',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+        // backgroundColor:'black',
+        // gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
       },
-      item: {
-        width: '100%',
-      },
+      item: {},
     },
     default: {
       content: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
+        // flexDirection: 'row',
+        // flexWrap: 'wrap',
       },
     },
   }),
-  photo: {
-    flex: 1,
-    resizeMode: 'cover',
-    paddingTop: '100%',
+  gif: {
+    // flex: 1,
+    // position:'absolute',
+    resizeMode: 'contain',
+    // right: 100,
+    height: 130,
+    width: 200,
   },
+  img: {},
 });
+
