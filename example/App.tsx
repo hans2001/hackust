@@ -6,6 +6,7 @@ import { Asset } from 'expo-asset';
 
 import App from './src/index';
 
+
 Asset.loadAsync(Assets);
 
 registerRootComponent(App);

@@ -113,7 +113,7 @@ const SCREENS = {
     component: MaterialTopTabsScreen,
   },
   MaterialBottomTabs: {
-    title: 'Material Bottom Tabs',
+    title: 'template',
     component: MaterialBottomTabs,
   },
   DynamicTabs: {

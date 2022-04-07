@@ -1,11 +1,13 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import type { NavigatorScreenParams } from '@react-navigation/native';
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { Settings, StyleSheet } from 'react-native';
 
 import Albums from '../Shared/Albums';
+import Article from '../Shared/Article';
 import Chat from '../Shared/Chat';
 import Contacts from '../Shared/Contacts';
+import SettingsItem from '../Shared/SettingsItem';
 import SimpleStackScreen, { SimpleStackParams } from './SimpleStack';
 
 type MaterialBottomTabParams = {
@@ -50,8 +52,8 @@ export default function MaterialBottomTabsScreen() {
         name="TabContacts"
         component={Contacts}
         options={{
-          tabBarLabel: 'Contacts',
-          tabBarIcon: 'contacts',
+          tabBarLabel: 'Forum',
+          tabBarIcon: 'forum',
           tabBarColor: '#F7EAA2',
         }}
       />
@@ -59,8 +61,17 @@ export default function MaterialBottomTabsScreen() {
         name="TabAlbums"
         component={Albums}
         options={{
-          tabBarLabel: 'Albums',
+          tabBarLabel: 'Market',
           tabBarIcon: 'image-album',
+          tabBarColor: '#FAD4D6',
+        }}
+      />
+       <MaterialBottomTabs.Screen
+        name="TabEarn"
+        component={Article}
+        options={{
+          tabBarLabel: 'Earn',
+          tabBarIcon: 'run',
           tabBarColor: '#FAD4D6',
         }}
       />

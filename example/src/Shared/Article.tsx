@@ -9,6 +9,8 @@ import {
   TextProps,
   View,
 } from 'react-native';
+import MapView from 'react-native-maps';
+import { Button } from 'react-native-paper';
 
 type Props = Partial<ScrollViewProps> & {
   date?: string;
@@ -17,27 +19,27 @@ type Props = Partial<ScrollViewProps> & {
   };
 };
 
-const Heading = ({
-  style,
-  ...rest
-}: TextProps & { children: React.ReactNode }) => {
-  const { colors } = useTheme();
+// const Heading = ({
+//   style,
+//   ...rest
+// }: TextProps & { children: React.ReactNode }) => {
+//   const { colors } = useTheme();
 
-  return (
-    <Text style={[styles.heading, { color: colors.text }, style]} {...rest} />
-  );
-};
+//   return (
+//     <Text style={[styles.heading, { color: colors.text }, style]} {...rest} />
+//   );
+// };
 
-const Paragraph = ({
-  style,
-  ...rest
-}: TextProps & { children: React.ReactNode }) => {
-  const { colors } = useTheme();
+// const Paragraph = ({
+//   style,
+//   ...rest
+// }: TextProps & { children: React.ReactNode }) => {
+//   const { colors } = useTheme();
 
-  return (
-    <Text style={[styles.paragraph, { color: colors.text }, style]} {...rest} />
-  );
-};
+//   return (
+//     <Text style={[styles.paragraph, { color: colors.text }, style]} {...rest} />
+//   );
+// };
 
 export default function Article({
   date = '1st Jan 2025',
@@ -47,102 +49,64 @@ export default function Article({
   ...rest
 }: Props) {
   const ref = React.useRef<ScrollView>(null);
-
+  const [region, setRegion] = React.useState({
+    latitude: 51.5079145,
+    longitude: -0.0899163,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+  });
   useScrollToTop(ref);
 
-  const { colors } = useTheme();
+  // const { colors } = useTheme();
 
   return (
+    // <View>
+
     <ScrollView
       ref={ref}
-      style={{ backgroundColor: colors.card }}
+      // style={{ backgroundColor: colors.card }}
       contentContainerStyle={styles.content}
       {...rest}
     >
-      <View style={styles.author}>
-        <Image
-          style={styles.avatar}
-          source={require('../../assets/avatar-1.png')}
-        />
-        <View style={styles.meta}>
-          <Text style={[styles.name, { color: colors.text }]}>
-            {author.name}
-          </Text>
-          <Text style={[styles.timestamp, { color: colors.text }]}>{date}</Text>
-        </View>
+      <Button
+        mode="contained"
+        style={{ zIndex: 99, bottom: 400, left: 370, width: 5 }}
+        onPress={() => console.log('motherfucker')}
+        icon="run"
+        color="green"
+      />
+      <View style={{ zIndex: 99, bottom: 40, left: 10 }}>
+        <Text style={{ color: 'blue' }}>Token generated : 120</Text>
+        <Text>Avg Pace : 8.21</Text>
+        <Text>TIme : 23.29</Text>
+        <Text>Calories : 442</Text>
+        <Text>Elevation Gain : 56 ft</Text>
+        <Text>Candence : 159</Text>
+        <Text>Avg Heart Rate : 167</Text>
       </View>
-      <Heading>What is Lorem Ipsum?</Heading>
-      <Paragraph>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-        ever since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
-      </Paragraph>
-      <Image style={styles.image} source={require('../../assets/book.jpg')} />
-      <Heading>Where does it come from?</Heading>
-      <Paragraph>
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It
-        has roots in a piece of classical Latin literature from 45 BC, making it
-        over 2000 years old. Richard McClintock, a Latin professor at
-        Hampden-Sydney College in Virginia, looked up one of the more obscure
-        Latin words, consectetur, from a Lorem Ipsum passage, and going through
-        the cites of the word in classical literature, discovered the
-        undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
-        of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and
-        Evil) by Cicero, written in 45 BC. This book is a treatise on the theory
-        of ethics, very popular during the Renaissance. The first line of Lorem
-        Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in
-        section 1.10.32.
-      </Paragraph>
-      <Paragraph>
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-        below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de
-        Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their
-        exact original form, accompanied by English versions from the 1914
-        translation by H. Rackham.
-      </Paragraph>
-      <Heading>Why do we use it?</Heading>
-      <Paragraph>
-        It is a long established fact that a reader will be distracted by the
-        readable content of a page when looking at its layout. The point of
-        using Lorem Ipsum is that it has a more-or-less normal distribution of
-        letters, as opposed to using &quot;Content here, content here&quot;,
-        making it look like readable English. Many desktop publishing packages
-        and web page editors now use Lorem Ipsum as their default model text,
-        and a search for &quot;lorem ipsum&quot; will uncover many web sites
-        still in their infancy. Various versions have evolved over the years,
-        sometimes by accident, sometimes on purpose (injected humour and the
-        like).
-      </Paragraph>
-      <Heading>Where can I get some?</Heading>
-      <Paragraph>
-        There are many variations of passages of Lorem Ipsum available, but the
-        majority have suffered alteration in some form, by injected humour, or
-        randomised words which don&apos;t look even slightly believable. If you
-        are going to use a passage of Lorem Ipsum, you need to be sure there
-        isn&apos;t anything embarrassing hidden in the middle of text. All the
-        Lorem Ipsum generators on the Internet tend to repeat predefined chunks
-        as necessary, making this the first true generator on the Internet. It
-        uses a dictionary of over 200 Latin words, combined with a handful of
-        model sentence structures, to generate Lorem Ipsum which looks
-        reasonable. The generated Lorem Ipsum is therefore always free from
-        repetition, injected humour, or non-characteristic words etc.
-      </Paragraph>
+      <View style={styles.container}>
+        <MapView
+          style={styles.map}
+          //specify our coordinates.
+          initialRegion={region}
+          onRegionChangeComplete={(region) => setRegion(region)}
+        />
+        {/* <Text style={styles.text}>Current latitude: {region.latitude}</Text>
+    <Text style={styles.text}>Current longitude: {region.longitude}</Text> */}
+      </View>
     </ScrollView>
+    // </View>
   );
 }
 
 const styles = StyleSheet.create({
   content: {
-    paddingVertical: 16,
+    paddingVertical: '100%',
+    // flex:1,
   },
   author: {
     flexDirection: 'row',
+    zIndex: 99,
     marginVertical: 8,
     marginHorizontal: 16,
   },
@@ -183,4 +147,14 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     marginVertical: 8,
   },
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    flex: 1, //the container will fill the whole screen.
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  text: {},
 });

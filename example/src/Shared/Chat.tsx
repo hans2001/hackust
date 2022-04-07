@@ -12,10 +12,13 @@ import {
 } from 'react-native';
 
 const MESSAGES = [
-  'okay',
-  'sudo make me a sandwich',
-  'what? make it yourself',
-  'make me a sandwich',
+  'oh mine I dare you not do anything stupid , you should sell it to me , kid!:)) ',
+  'ahhh! , my nft just dropped the shit out of price , I cannot imagine why did I bought it',
+  'I told you it is not gonna work',
+  'who ? send a pic of your nft and We shall see why itis not valuable',
+  'those stupid ass people still believe those nft shit  , um ..  pathetic',
+  'my god can you believe that , the stupid ass mooncoin just got hugely invested by some tech racoon , oyu guys better watch out   ',
+  'I dont know how much this is worth , but I  do know that you must be fool to tell somebody about it',
 ];
 
 export default function Chat(props: Partial<ScrollViewProps>) {
@@ -33,7 +36,8 @@ export default function Chat(props: Partial<ScrollViewProps>) {
         {...props}
       >
         {MESSAGES.map((text, i) => {
-          const odd = i % 2;
+          const odd = i == 1;
+          const avatar = i%2;
 
           return (
             <View
@@ -44,7 +48,7 @@ export default function Chat(props: Partial<ScrollViewProps>) {
               <Image
                 style={styles.avatar}
                 source={
-                  odd
+                  avatar
                     ? require('../../assets/avatar-2.png')
                     : require('../../assets/avatar-1.png')
                 }
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
     transform: [{ scaleY: -1 }],
   },
   content: {
-    padding: 16,
+    padding: 10,
   },
   even: {
     flexDirection: 'row',
@@ -93,20 +97,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
   },
   avatar: {
-    marginVertical: 8,
-    marginHorizontal: 6,
-    height: 40,
-    width: 40,
-    borderRadius: 20,
+    marginVertical: 6,
+    marginHorizontal: 4,
+    height: 30,
+    width: 30,
+    borderRadius: 10,
     borderColor: 'rgba(0, 0, 0, .16)',
     borderWidth: StyleSheet.hairlineWidth,
   },
   bubble: {
     marginVertical: 8,
-    marginHorizontal: 6,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 20,
+    marginHorizontal:12,
+    paddingVertical: 8,
+    paddingHorizontal:12,
+    borderRadius: 10,
   },
   input: {
     height: 48,

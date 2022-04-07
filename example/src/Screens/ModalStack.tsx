@@ -47,6 +47,7 @@ const ArticleScreen = ({
   );
 };
 
+
 const AlbumsScreen = ({ navigation }: StackScreenProps<ModalStackParams>) => {
   return (
     <ScrollView>
