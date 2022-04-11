@@ -38,7 +38,7 @@ export default function Chat(props: Partial<ScrollViewProps>) {
         {MESSAGES.map((text, i) => {
           const odd = i == 1;
           const avatar = i%2;
-
+          const triple = i%2;
           return (
             <View
               // eslint-disable-next-line react/no-array-index-key
@@ -56,10 +56,10 @@ export default function Chat(props: Partial<ScrollViewProps>) {
               <View
                 style={[
                   styles.bubble,
-                  { backgroundColor: odd ? colors.primary : colors.card },
+                  { backgroundColor: odd ? 'lightblue': triple ? 'purple' : colors.card },
                 ]}
               >
-                <Text style={{ color: odd ? 'white' : colors.text }}>
+                <Text style={{ color:   'white'  }}>
                   {text}
                 </Text>
               </View>

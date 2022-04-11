@@ -23,6 +23,15 @@ const MaterialBottomTabs =
 export default function MaterialBottomTabsScreen() {
   return (
     <MaterialBottomTabs.Navigator barStyle={styles.tabBar}>
+          <MaterialBottomTabs.Screen
+        name="TabEarn"
+        component={Article}
+        options={{
+          tabBarLabel: 'Earn',
+          tabBarIcon: 'run',
+          tabBarColor: '#FAD4D6',
+        }}
+      />
       <MaterialBottomTabs.Screen
         name="TabStack"
         options={{
@@ -38,7 +47,7 @@ export default function MaterialBottomTabsScreen() {
           />
         )}
       </MaterialBottomTabs.Screen>
-      <MaterialBottomTabs.Screen
+      {/* <MaterialBottomTabs.Screen
         name="TabChat"
         component={Chat}
         options={{
@@ -47,7 +56,7 @@ export default function MaterialBottomTabsScreen() {
           tabBarColor: '#9FD5C9',
           tabBarBadge: true,
         }}
-      />
+      /> */}
       <MaterialBottomTabs.Screen
         name="TabContacts"
         component={Contacts}
@@ -63,15 +72,6 @@ export default function MaterialBottomTabsScreen() {
         options={{
           tabBarLabel: 'Market',
           tabBarIcon: 'image-album',
-          tabBarColor: '#FAD4D6',
-        }}
-      />
-       <MaterialBottomTabs.Screen
-        name="TabEarn"
-        component={Article}
-        options={{
-          tabBarLabel: 'Earn',
-          tabBarIcon: 'run',
           tabBarColor: '#FAD4D6',
         }}
       />

@@ -3,6 +3,7 @@ import Color from 'color';
 import * as React from 'react';
 import {
   Image,
+  RefreshControl,
   ScrollView,
   ScrollViewProps,
   StyleSheet,
@@ -17,6 +18,7 @@ import {
   IconButton,
   Subheading,
 } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type Props = Partial<ScrollViewProps> & {
   date?: number;
@@ -83,11 +85,27 @@ export default function NewsFeed(props: Props) {
   };
 
   useScrollToTop(ref);
+  const wait = (timeout:any) => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+}
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(500).then(() => setRefreshing(false));
+  }, []);
 
   const { colors } = useTheme();
 
   return (
-    <ScrollView ref={ref} {...props}>
+    <SafeAreaView>
+    <ScrollView
+      ref={ref}
+      {...props}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <Card style={styles.card}>
         <TextInput
           placeholder="What's on your mind?"
@@ -99,9 +117,10 @@ export default function NewsFeed(props: Props) {
       <Card style={styles.card}>
         <Emily />
         <Card.Content style={styles.content}>
-          <Text>
-            just got my fantastic first shoe nfts from this platform  which is dope  , i fking love it , 
-            wishing  I Can sell it with a great price at opensea , you know , I maaa abt ot be a bilionaier , kids!!
+          <Text style={styles.text}>
+            just got my fantastic first shoe nfts from this platform which is
+            dope , i fking love it , wishing I Can sell it with a great price at
+            opensea , you know , I maaa abt ot be a bilionaier , kids!!
           </Text>
         </Card.Content>
         <Image
@@ -112,10 +131,12 @@ export default function NewsFeed(props: Props) {
         {/* <Divider /> */}
         <Footer />
 
-        <Card.Content >
-          <Text >Hans : Wow , that is nice my man!!</Text>
-          <Text>melody : how you got this one , my friend :) ?? @Emily</Text>
-          <Text>K : Please don't tell anyone </Text>
+        <Card.Content style={styles.content}>
+          <Text style={styles.text}>Hans : Wow , that is nice my man!!</Text>
+          <Text style={styles.text}>
+            melody : how you got this one , my friend :) ?? @Emily
+          </Text>
+          <Text style={styles.text}>K : Please don't tell anyone </Text>
         </Card.Content>
         <TextInput
           placeholder="What's your thought?"
@@ -127,7 +148,7 @@ export default function NewsFeed(props: Props) {
       <Card style={styles.card}>
         <Sam />
         <Card.Content style={styles.content}>
-          <Text>
+          <Text style={styles.text}>
             what your guys thought on the latest coins to invest o , I
             personally bought some doge coins cause it's dope!some one said this
             is scam , i think they are dump
@@ -138,9 +159,12 @@ export default function NewsFeed(props: Props) {
           style={styles.cover}
         />
         <Footer />
-        <Card.Content >
-          <Text>awidwbd : price of bitcoin is over the roof now , don't get in the market!!</Text>
-          <Text>placeholder : no way!!  </Text>
+        <Card.Content style={styles.content}>
+          <Text style={styles.text}>
+            awidwbd : price of bitcoin is over the roof now , don't get in the
+            market!!
+          </Text>
+          <Text style={styles.text}>placeholder : no way!! </Text>
         </Card.Content>
         <TextInput
           placeholder="What's your thought?"
@@ -151,7 +175,7 @@ export default function NewsFeed(props: Props) {
       <Card style={styles.card}>
         <Author />
         <Card.Content style={styles.content}>
-          <Text>
+          <Text style={styles.text}>
             just designed my first shoe nfts with this platform , it;s dope and
             i ma gonna save it bitches!!!.
           </Text>
@@ -163,10 +187,15 @@ export default function NewsFeed(props: Props) {
         />
         <Divider />
         <Footer />
-        
-        <Card.Content >
-          <Text>khabila : Congrats ! This is the newest one from Nike , I 've want that for centries @ Nike</Text>
-          <Text>killingme : no body is gonna told you that you 're dumb!! xd loser </Text>
+
+        <Card.Content style={styles.content}>
+          <Text style={styles.text}>
+            khabila : Congrats ! This is the newest one from Nike , I 've want
+            that for centries @ Nike
+          </Text>
+          <Text style={styles.text}>
+            killingme : no body is gonna told you that you 're dumb!! xd loser{' '}
+          </Text>
         </Card.Content>
         <TextInput
           placeholder="What's your thought?"
@@ -177,9 +206,11 @@ export default function NewsFeed(props: Props) {
       <Card style={styles.card}>
         <Author />
         <Card.Content style={styles.content}>
-          <Text>
+          <Text style={styles.text}>
             you guys been playing sandbox ?? it's so fun come join me !!
-            <Text style={{ color: 'blue' }}>https://www.sandbox.game/en/</Text>
+            <Text style={{ color: 'lightblue' }}>
+              https://www.sandbox.game/en/
+            </Text>
           </Text>
         </Card.Content>
         <Image
@@ -188,10 +219,15 @@ export default function NewsFeed(props: Props) {
         />
         {/* <Divider /> */}
         <Footer />
-        
-        <Card.Content >
-          <Text>awdkawd : ahhh I waited this game for a long timeee!!</Text>
-          <Text>mcgregor : you guys are a joke , I ma punch in the face , fking losersss!! </Text>
+
+        <Card.Content style={styles.content}>
+          <Text style={styles.text}>
+            awdkawd : ahhh I waited this game for a long timeee!!
+          </Text>
+          <Text style={styles.text}>
+            mcgregor : you guys are a joke , I ma punch in the face , fking
+            losersss!!{' '}
+          </Text>
         </Card.Content>
         <TextInput
           placeholder="What's your thought?"
@@ -210,13 +246,14 @@ export default function NewsFeed(props: Props) {
         <Footer />
       </Card> */}
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   input: {
     padding: 10,
-    borderRadius:10,
+    borderRadius: 10,
     backgroundColor: 'transparent',
     margin: 5,
   },
@@ -230,6 +267,7 @@ const styles = StyleSheet.create({
   },
   content: {
     marginBottom: 12,
+    // color:'white'
   },
   attribution: {
     margin: 12,
@@ -246,5 +284,8 @@ const styles = StyleSheet.create({
   },
   msg: {
     // marginBottom: 8,
+  },
+  text: {
+    color: 'white',
   },
 });

@@ -1,10 +1,13 @@
 import { FontAwesome } from '@expo/vector-icons';
 import { useScrollToTop, useTheme } from '@react-navigation/native';
+import type { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
+import type { ScrollViewProps } from 'react-native';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
 type Item = { msg:string , name: string; hashtags: string };
-
+import { useNavigation } from '@react-navigation/core';
+import Chat from './Chat';
 const CONTACTS: Item[] = [
   { msg:"awdwdbn: I told you no one is gonna buy it",name: 'upcoming money nfts from artist monkey king ..', hashtags:"#nfts #web3 #opensea #sales"  },
   { msg:"hanssag: well said, I do expecting it to come out ",name: 'sandbox announce the newest transaction ...', hashtags:"#game #web3 #sandbox #finance"  },
@@ -16,10 +19,11 @@ const CONTACTS: Item[] = [
 ];
 
 const ContactItem = React.memo(
-  ({ item }: { item: {msg:string, name: string; hashtags: string  } }) => {
+  ({ item }: { item: {msg:string, name: string; hashtags: string  }}) => {
     const { colors } = useTheme();
-
+    const navigation = useNavigation();
     return (
+      <TouchableOpacity onPress={()=>navigation.navigate('Chat')}>
       <View style={[styles.item, { backgroundColor: colors.card }]}>
         <View style={styles.avatar}>
           <Text style={styles.letter}>
@@ -30,11 +34,12 @@ const ContactItem = React.memo(
           <Text style={[styles.name, { color: colors.text }]}>{item.name}</Text>
           
           <Text style={{paddingVertical:8,color:'grey'}}>{item.msg}</Text>
-          <Text style={[styles.number, { color: 'blue', opacity: 0.8 }]}>
+          <Text style={[styles.number, { color: 'lightblue', opacity: 0.8 }]}>
             {item.hashtags}
           </Text>
         </View>
       </View>
+      </TouchableOpacity>
     );
   }
 );
@@ -57,6 +62,7 @@ export default function Contacts() {
   return (
     <FlatList
       ref={ref}
+      
       data={CONTACTS}
       keyExtractor={(_, i) => String(i)}
       renderItem={renderItem}
@@ -75,7 +81,7 @@ const styles = StyleSheet.create({
     height: 36,
     width: 36,
     borderRadius: 18,
-    backgroundColor: '#e91e63',
+    backgroundColor: 'purple',
     alignItems: 'center',
     justifyContent: 'center',
   },
