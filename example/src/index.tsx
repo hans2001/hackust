@@ -63,6 +63,7 @@ import PreventRemove from './Screens/PreventRemove';
 import SimpleStack from './Screens/SimpleStack';
 import StackHeaderCustomization from './Screens/StackHeaderCustomization';
 import StackTransparent from './Screens/StackTransparent';
+import Chat from './Shared/Chat';
 import SettingsItem from './Shared/SettingsItem';
 
 if (Platform.OS !== 'web') {
@@ -135,6 +136,10 @@ const SCREENS = {
   LinkComponent: {
     title: '<Link />',
     component: LinkComponent,
+  },
+  Msg: {
+    title: 'Chat',
+    component: Chat,
   },
 };
 
@@ -325,6 +330,7 @@ export default function App() {
               headerShown: false,
             }}
           >
+            
             {() => (
               <Drawer.Navigator
                 screenOptions={{
@@ -408,6 +414,11 @@ export default function App() {
               options={{ title: SCREENS[name].title }}
             />
           ))}
+          <Stack.Screen
+            name="Chat"
+            component={Chat}
+            // options={{ title: 'Oops!' }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

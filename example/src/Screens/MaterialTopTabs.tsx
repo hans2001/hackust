@@ -4,13 +4,17 @@ import type { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 
 import Albums from '../Shared/Albums';
+import Article from '../Shared/Article';
 import Chat from '../Shared/Chat';
 import Contacts from '../Shared/Contacts';
+import NewsFeed from '../Shared/NewsFeed';
+import SettingsItem from '../Shared/SettingsItem';
 
 type MaterialTopTabParams = {
-  Albums: undefined;
-  Contacts: undefined;
-  Chat: undefined;
+  Market: undefined;
+  Forum: undefined;
+  Run: undefined;
+  Share: undefined;
 };
 
 const MaterialTopTabs = createMaterialTopTabNavigator<MaterialTopTabParams>();
@@ -27,19 +31,29 @@ export default function MaterialTopTabsScreen({
   return (
     <MaterialTopTabs.Navigator>
       <MaterialTopTabs.Screen
-        name="Chat"
-        component={Chat}
-        options={{ title: 'Chat' }}
+        name="Run"
+        component={Article}
+        options={{ title: 'Run' }}
       />
       <MaterialTopTabs.Screen
-        name="Contacts"
+        name="Share"
+        component={NewsFeed}
+        options={{ title: 'Share' }}
+      />
+      <MaterialTopTabs.Screen
+        name="Forum"
         component={Contacts}
-        options={{ title: 'Contacts' }}
+        options={{ title: 'Forum' }}
       />
       <MaterialTopTabs.Screen
-        name="Albums"
+        name="Market"
         component={Albums}
-        options={{ title: 'Albums' }}
+        options={{ title: 'Market' }}
+      />
+      <MaterialTopTabs.Screen
+        name="Design"
+        component={SettingsItem}
+        options={{ title: 'design' }}
       />
     </MaterialTopTabs.Navigator>
   );

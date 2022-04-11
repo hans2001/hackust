@@ -6,11 +6,14 @@ import {
   Dimensions,
   Image,
   ImageBackground,
+  Modal,
   Platform,
+  Pressable,
   ScaledSize,
   ScrollView,
   ScrollViewProps,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -38,7 +41,7 @@ const img1 = [
 ];
 export default function Albums(props: Partial<ScrollViewProps>) {
   const [dimensions, setDimensions] = React.useState(Dimensions.get('window'));
-
+  const [modalVisible, setModalVisible] = React.useState(false);
   React.useEffect(() => {
     const onDimensionsChange = ({ window }: { window: ScaledSize }) => {
       setDimensions(window);
@@ -63,7 +66,7 @@ export default function Albums(props: Partial<ScrollViewProps>) {
             // eslint-disable-next-line react/no-array-index-key
             key={i}
           >
-            <TouchableOpacity onPress={() => console.log('motherfucker')}>
+            <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
               <Image source={source} style={{ width: 220 }} />
             </TouchableOpacity>
           </View>
@@ -80,7 +83,44 @@ export default function Albums(props: Partial<ScrollViewProps>) {
           top: 300,
         }}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          // Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+          <Text style={styles.modalText}>The 9th Generation Nike anniversary version</Text>
+            <Text style={styles.modalText}>Current Price : 0.2 ETH</Text>
+            {/* <Text>Price :</Text> */}
+            {/* <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable> */}
 
+            <View style={{ flexDirection: 'row' }}>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => console.log('nice')}
+              >
+                <Text style={styles.textStyle}>Purchase</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Close</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
       <ImageBackground
         source={require('../../assets/dark.jpg')}
         resizeMode="cover"
@@ -95,7 +135,7 @@ export default function Albums(props: Partial<ScrollViewProps>) {
               // eslint-disable-next-line react/no-array-index-key
               key={i}
             >
-              <TouchableOpacity onPress={() => console.log('motherfucker')}>
+              <TouchableOpacity onPress={() => setModalVisible(true)}>
                 <Image source={source} style={styles.gif} />
               </TouchableOpacity>
             </View>
@@ -107,7 +147,7 @@ export default function Albums(props: Partial<ScrollViewProps>) {
               // eslint-disable-next-line react/no-array-index-key
               key={i}
             >
-              <TouchableOpacity onPress={() => console.log('motherfucker')}>
+              <TouchableOpacity onPress={() => setModalVisible(true)}>
                 <Image source={source} style={styles.gif} />
               </TouchableOpacity>
             </View>
@@ -143,6 +183,47 @@ const styles = StyleSheet.create({
     height: 130,
     width: 200,
   },
-  img: {},
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 2,
+      height: 4,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 10,
+    padding: 15,
+    marginLeft:10,
+    // paddingLeft:10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 10,
+    textAlign: 'center',
+  },
 });
-
