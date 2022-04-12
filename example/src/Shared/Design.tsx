@@ -38,10 +38,16 @@ export default function Design({ label, value, onValueChange }: Props) {
   const [activity, setActivity] = React.useState<string>('');
   const [index, setIndex] = React.useState<number>(0);
   const [male, setMale] = React.useState(false);
-  const [female, setFemale] = React.useState(false);
+  // const [female, setFemale] = React.useState(false);
   const [brand,setBrand] = React.useState()
   const [logo,setLogo] = React.useState(false)
+  const[sig,setSig] = React.useState(false)
+  const[pattern,setPattern] = React.useState('')
+  const[texture,setTexture] = React.useState('')
   
+
+
+
   return (
     <ScrollView
       style={
@@ -133,7 +139,7 @@ export default function Design({ label, value, onValueChange }: Props) {
             />
             <View style={{marginTop:15,flexDirection:'row' , paddingLeft:20}}>
             <Checkbox
-            color='gray'
+            color='darkred'
               status={logo ? 'checked' : 'unchecked'}
               onPress={() => {
                 setLogo(!logo);
@@ -142,6 +148,31 @@ export default function Design({ label, value, onValueChange }: Props) {
                        <Text style={{fontSize:20,color:'slategray',paddingTop:3,marginLeft:10}}>Logo</Text>
             </View>
           </View>
+
+          <View style={{  }}>
+            <TextInput
+              // underlineColorAndroid={'white'}
+              // outlineColor='white'
+              style={{ marginTop: 10 }}
+              label="pattern"
+              multiline
+              placeholder="preferred pattern"
+              value={pattern}
+              onChangeText={(pattern) => setPattern(pattern)}
+            />
+
+            <TextInput
+              // underlineColorAndroid={'white'}
+              // outlineColor='white'
+              style={{ marginTop: 10,  }}
+              label="Texture"
+              placeholder="preferred texture"
+              value={texture}
+              onChangeText={(texture) => setTexture(texture)}
+            />
+          </View>
+
+
           <View style={{ flexDirection: 'row',marginTop:10  }}>
             <Checkbox
             color='lightblue'
@@ -150,22 +181,23 @@ export default function Design({ label, value, onValueChange }: Props) {
                 setMale(!male);
               }}
             />
-            <Text style={{fontSize:20,color:'slategray',paddingTop:4,paddingLeft:10}}>Male</Text>
-            <Text>                                </Text>
+            <Text style={{fontSize:20,color:'slategray',paddingTop:4,paddingLeft:10}}>Waterproof</Text>
+            <Text>                </Text>
             <Checkbox
             color='pink'
-              status={female ? 'checked' : 'unchecked'}
+              status={sig ? 'checked' : 'unchecked'}
               onPress={() => {
-                setFemale(!female);
+                setSig(!sig);
               }}
             />
             
-            <Text style={{fontSize:20,color:'slategrey',paddingTop:4,paddingLeft:10}}>Female</Text>
+            <Text style={{fontSize:20,color:'slategrey',paddingTop:4,paddingLeft:10}}>Signature</Text>
           </View>
           
           {/* <Text style={{fontSize:15,paddingTop:20,color:'white',paddingLeft:3}}>gender : </Text> */}
         </Card.Content>
         {/* <Card.Actions> */}
+        <Button onPress={()=>console.log()} color='gray' style={{marginTop:10}} disabled={!sig}>Upload Signature</Button>
         <Button onPress={()=>console.log()} color='gray' style={{marginTop:10}}>Upload Design Blueprint</Button>
         <View style={{flexDirection:'row',marginTop:20}}>
         <Button style={{ width: 200 }} onPress={() => console.log('haha')}>
@@ -178,7 +210,7 @@ export default function Design({ label, value, onValueChange }: Props) {
         {/* </Card.Actions> */}
       </Card>
       {/* <Subheading>{label}</Subheading> */}
-      <Switch value={value} onValueChange={onValueChange} />
+      {/* <Switch value={value} onValueChange={onValueChange} /> */}
     </ScrollView>
   );
 }
