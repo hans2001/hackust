@@ -82,61 +82,61 @@ type RootDrawerParamList = {
 };
 
 const SCREENS = {
-  NativeStack: { title: 'Native Stack', component: NativeStack },
-  SimpleStack: { title: 'Simple Stack', component: SimpleStack },
-  ModalStack: {
-    title: 'Modal Stack',
-    component: ModalStack,
-  },
-  MixedStack: {
-    title: 'Regular + Modal Stack',
-    component: MixedStack,
-  },
-  MixedHeaderMode: {
-    title: 'Float + Screen Header Stack',
-    component: MixedHeaderMode,
-  },
-  StackTransparent: {
-    title: 'Transparent Stack',
-    component: StackTransparent,
-  },
-  StackHeaderCustomization: {
-    title: 'Header Customization in Stack',
-    component: StackHeaderCustomization,
-  },
-  NativeStackHeaderCustomization: {
-    title: 'Header Customization in Native Stack',
-    component: NativeStackHeaderCustomization,
-  },
-  BottomTabs: { title: 'Bottom Tabs', component: BottomTabs },
+  // NativeStack: { title: 'Native Stack', component: NativeStack },
+  // SimpleStack: { title: 'Simple Stack', component: SimpleStack },
+  // ModalStack: {
+  //   title: 'Modal Stack',
+  //   component: ModalStack,
+  // },
+  // MixedStack: {
+  //   title: 'Regular + Modal Stack',
+  //   component: MixedStack,
+  // },
+  // MixedHeaderMode: {
+  //   title: 'Float + Screen Header Stack',
+  //   component: MixedHeaderMode,
+  // },
+  // StackTransparent: {
+  //   title: 'Transparent Stack',
+  //   component: StackTransparent,
+  // },
+  // StackHeaderCustomization: {
+  //   title: 'Header Customization in Stack',
+  //   component: StackHeaderCustomization,
+  // },
+  // NativeStackHeaderCustomization: {
+  //   title: 'Header Customization in Native Stack',
+  //   component: NativeStackHeaderCustomization,
+  // },
+  // BottomTabs: { title: 'Bottom Tabs', component: BottomTabs },
   MaterialTopTabs: {
-    title: 'Material Top Tabs',
+    title: 'Real Potential',
     component: MaterialTopTabsScreen,
   },
   MaterialBottomTabs: {
     title: 'template',
     component: MaterialBottomTabs,
   },
-  DynamicTabs: {
-    title: 'Dynamic Tabs',
-    component: DynamicTabs,
-  },
-  MasterDetail: {
-    title: 'Master Detail',
-    component: MasterDetail,
-  },
+  // DynamicTabs: {
+  //   title: 'Dynamic Tabs',
+  //   component: DynamicTabs,
+  // },
+  // MasterDetail: {
+  //   title: 'Master Detail',
+  //   component: MasterDetail,
+  // },
   AuthFlow: {
     title: 'Auth Flow',
     component: AuthFlow,
   },
-  PreventRemove: {
-    title: 'Prevent removing screen',
-    component: PreventRemove,
-  },
-  LinkComponent: {
-    title: '<Link />',
-    component: LinkComponent,
-  },
+  // PreventRemove: {
+  //   title: 'Prevent removing screen',
+  //   component: PreventRemove,
+  // },
+  // LinkComponent: {
+  //   title: '<Link />',
+  //   component: LinkComponent,
+  // },
   Msg: {
     title: 'Chat',
     component: Chat,
@@ -266,7 +266,7 @@ export default function App() {
           // The first segment of the link is the the scheme + host (returned by `Linking.makeUrl`)
           prefixes: [createURL('/')],
           config: {
-            initialRouteName: 'Home',
+            initialRouteName:'MaterialTopTabs',
             screens: (Object.keys(SCREENS) as (keyof typeof SCREENS)[]).reduce<
               PathConfigMap<RootStackParamList>
             >(

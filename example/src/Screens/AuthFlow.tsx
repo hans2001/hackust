@@ -213,7 +213,7 @@ export default function SimpleStackScreen({
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    padding: 16,
+    padding: 20,
     justifyContent: 'center',
   },
   input: {

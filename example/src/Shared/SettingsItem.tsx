@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import { Subheading, Switch } from 'react-native-paper';
+import { Button, Card, Paragraph, Subheading, Switch, Title } from 'react-native-paper';
 
 type Props = {
   label: string;
