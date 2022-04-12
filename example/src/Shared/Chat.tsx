@@ -56,7 +56,7 @@ export default function Chat(props: Partial<ScrollViewProps>) {
               <View
                 style={[
                   styles.bubble,
-                  { backgroundColor: odd ? 'lightblue': triple ? 'purple' : colors.card },
+                  { backgroundColor: odd ? 'darkslateblue': triple ? 'purple' : colors.card },
                 ]}
               >
                 <Text style={{ color:   'white'  }}>

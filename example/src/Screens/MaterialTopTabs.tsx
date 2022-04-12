@@ -7,6 +7,7 @@ import Albums from '../Shared/Albums';
 import Article from '../Shared/Article';
 import Chat from '../Shared/Chat';
 import Contacts from '../Shared/Contacts';
+import Design from '../Shared/Design';
 import NewsFeed from '../Shared/NewsFeed';
 import SettingsItem from '../Shared/SettingsItem';
 
@@ -52,7 +53,7 @@ export default function MaterialTopTabsScreen({
       />
       <MaterialTopTabs.Screen
         name="Design"
-        component={SettingsItem}
+        component={Design}
         options={{ title: 'design' }}
       />
     </MaterialTopTabs.Navigator>
