@@ -44,6 +44,9 @@ export default function Design({ label, value, onValueChange }: Props) {
   const[sig,setSig] = React.useState(false)
   const[pattern,setPattern] = React.useState('')
   const[texture,setTexture] = React.useState('')
+  const[price1,setPrice1] = React.useState<boolean>(false)
+  const[price2,setPrice2] = React.useState<boolean>(false)
+  const[price3,setPrice3] = React.useState<boolean>(false)
   
 
 
@@ -154,7 +157,7 @@ export default function Design({ label, value, onValueChange }: Props) {
               // underlineColorAndroid={'white'}
               // outlineColor='white'
               style={{ marginTop: 10 }}
-              label="pattern"
+              label="Pattern"
               multiline
               placeholder="preferred pattern"
               value={pattern}
@@ -193,6 +196,40 @@ export default function Design({ label, value, onValueChange }: Props) {
             
             <Text style={{fontSize:20,color:'slategrey',paddingTop:4,paddingLeft:10}}>Signature</Text>
           </View>
+          
+          <View style={{ flexDirection: 'row',marginTop:10  }}>
+          <Text style={{fontSize:20,color:'slategray',paddingTop:4,paddingLeft:5}}>Price</Text>
+            <Checkbox
+            color='lightblue'
+              status={price1 ? 'checked' : 'unchecked'}
+              onPress={() => {
+                setPrice1(!price1);
+              }}
+            />
+            
+            <Text style={{fontSize:20,color:'slategray',paddingTop:4,paddingLeft:5}}>300</Text>
+            <Text>           </Text>
+            <Checkbox
+            color='pink'
+              status={price2? 'checked' : 'unchecked'}
+              onPress={() => {
+                setPrice2(!price2);
+              }}
+            />
+            
+            <Text style={{fontSize:20,color:'slategrey',paddingTop:4,paddingLeft:5}}>500</Text>
+            <Text>           </Text>
+            <Checkbox
+            color='green'
+              status={price3 ? 'checked' : 'unchecked'}
+              onPress={() => {
+                setPrice3(!price3);
+              }}
+            />
+            
+            <Text style={{fontSize:20,color:'slategrey',paddingTop:4,paddingLeft:5}}>800</Text>
+          </View>
+
           
           {/* <Text style={{fontSize:15,paddingTop:20,color:'white',paddingLeft:3}}>gender : </Text> */}
         </Card.Content>

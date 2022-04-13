@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import MapView, { Callout, Marker, UrlTile } from 'react-native-maps';
 import { Banner, Button, TextInput } from 'react-native-paper';
-
+// import {useState} from 'React'
 
 type Props = Partial<ScrollViewProps> & {
   date?: string;
@@ -68,12 +68,52 @@ export default function Article({
   const [end, setEnd] = React.useState<boolean>(false);
   // const { colors } = useTheme();
   const [visible, setVisible] = React.useState(true);
-  const [time, setTime] = React.useState('00 : 00 : 00');
+  // const [time, setTime] = React.useState('00 : 23 : 12');
+  // const {initialMinute = 0,initialSeconds = 0};
+  const [hours, setHours] = React.useState(0);
+  const [minutes, setMinutes] = React.useState(0);
+  const [seconds, setSeconds] = React.useState(0);
+  const[miles,setMiles] = React.useState(0)
+  const[carolies,setCarolies] = React.useState(0)
+  const[speed,setSpeed] = React.useState(0)
+  React.useEffect(() => {
+    if(!end){
+    let myInterval = setInterval(() => {
+      setSeconds(seconds + 1);
+      if (seconds >= 59) {
+        if (minutes >= 59) {
+          setMinutes(0);
+          setHours(hours + 1);
+          setSeconds(0);
+        } else {
+          setMinutes(minutes + 1);
+          setSeconds(0);
+        }
+      }
+    }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  }
+  });
+
+  React.useEffect(()=>{
+    if(!end){
+      setSeconds(0)
+      setMinutes(0)
+      setHours(0)
+    }else{
+
+      
+    }
+  },[end]
+  )
+
   // const[miles,setMiles] = React.useState();
-// const[calories,setCarlories] = React.useState()
+  // const[calories,setCarlories] = React.useState()
   return (
     <View>
-      <Banner
+            <Banner
         visible={visible}
         // contentStyle={{justifyContent:'center',alignSelf:'center'}}
         style={{}}
@@ -101,30 +141,40 @@ export default function Article({
       >
         <View >
         <View style={{flexDirection:'row'}}>
-          <Text style={{color:'black',fontSize:40}}>     </Text>
-        <Text style={{fontSize:50,fontWeight:'bold',color:'white'}}>{time}</Text>
+          <Text style={{color:'black',fontSize:40}}>    </Text>
+        {/* <Text style={{fontSize:50,fontWeight:'bold',color:'white'}}> */}
+          
+                <Text
+                  style={{ fontSize: 50, fontWeight: 'bold', color: 'white',marginRight:20 }}
+                >
+                  {' '}
+               {hours < 10 ? `0${hours}` : hours} : {minutes < 10 ? `0${minutes}` : minutes} : {seconds < 10 ? `0${seconds}` : seconds}
+                </Text>
+              
+              
+              {/* </Text> */}
       </View>
       <View style={{flexDirection:'row'}}>
           <Text style={{color:'black',fontSize:20}}>                               </Text>
-        <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>Time</Text>
+        <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}> Time</Text>
       </View>
       </View>
       <View style={{flexDirection:'row'}}>
       <View style={{flexDirection:'column' , }}>
           {/* <Text style={{color:'black',fontSize:10}}>                                                      </Text> */}
-        <Text style={{fontSize:25,fontWeight:'bold',color:'white'}}>0.00</Text>
+        <Text style={{fontSize:25,fontWeight:'bold',color:'white'}}>   {miles}</Text>
         <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>miles</Text>
         {/* <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>0.00</Text> */}
       </View>
       <View style={{flexDirection:'column', }}>
           {/* <Text style={{color:'black',fontSize:1}}></Text> */}
-        <Text style={{fontSize:25,fontWeight:'bold',color:'white'}}>                    0 </Text>
-        <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>                   calories</Text>
+        <Text style={{fontSize:25,fontWeight:'bold',color:'white'}}>                     {carolies} </Text>
+        <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>                    calories</Text>
         {/* <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>0.00</Text> */}
       </View>
       <View style={{flexDirection:'column', }}>
           {/* <Text style={{color:'black',fontSize:1}}></Text> */}
-        <Text style={{fontSize:25,fontWeight:'bold',color:'white'}}>            00:00</Text>
+        <Text style={{fontSize:25,fontWeight:'bold',color:'white'}}>                {speed}</Text>
         <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>            avg speed</Text>
         {/* <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>0.00</Text> */}
       </View>

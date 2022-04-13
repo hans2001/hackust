@@ -10,6 +10,7 @@ import Contacts from '../Shared/Contacts';
 import Design from '../Shared/Design';
 import NewsFeed from '../Shared/NewsFeed';
 import SettingsItem from '../Shared/SettingsItem';
+import Timer from '../Shared/Timer';
 
 type MaterialTopTabParams = {
   Market: undefined;
