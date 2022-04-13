@@ -35,8 +35,8 @@ const gif2 = [
 ];
 
 const img1 = [
-  require('../../assets/unnamed.gif'),
-  require('../../assets/ape2.jpg'),
+  require('../../assets/shoe6.gif'),
+  require('../../assets/shoe7.gif'),
   // require('../../assets/game.jpg'),
 ];
 export default function Albums(props: Partial<ScrollViewProps>) {
@@ -67,12 +67,12 @@ export default function Albums(props: Partial<ScrollViewProps>) {
             key={i}
           >
             <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
-              <Image source={source} style={{ width: 220 }} />
+              <Image source={source} style={styles.gif2} />
             </TouchableOpacity>
           </View>
         ))}
       </View>
-
+{/* 
       <Image
         source={require('../../assets/unnamed.jpg')}
         style={{
@@ -82,7 +82,7 @@ export default function Albums(props: Partial<ScrollViewProps>) {
           height: 220,
           top: 300,
         }}
-      />
+      /> */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -95,7 +95,7 @@ export default function Albums(props: Partial<ScrollViewProps>) {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
           <Text style={styles.modalText}>The 9th Generation Nike anniversary version</Text>
-            <Text style={styles.modalText}>Current Price : 0.2 ETH</Text>
+            <Text style={styles.modalText}>Current Price : 300 HKD</Text>
             {/* <Text>Price :</Text> */}
             {/* <Pressable
               style={[styles.button, styles.buttonClose]}
@@ -182,6 +182,14 @@ const styles = StyleSheet.create({
     // right: 100,
     height: 130,
     width: 200,
+  },
+  gif2: {
+    // flex: 1,
+    // position:'absolute',
+    resizeMode: 'cover',
+    // right: 100,
+    height: 130,
+    width: 210,
   },
   centeredView: {
     flex: 1,
