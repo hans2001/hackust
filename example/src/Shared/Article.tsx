@@ -2,6 +2,8 @@ import { useScrollToTop, useTheme } from '@react-navigation/native';
 import * as React from 'react';
 import {
   Image,
+  Modal,
+  Pressable,
   ScrollView,
   ScrollViewProps,
   StyleSheet,
@@ -76,6 +78,7 @@ export default function Article({
   const[miles,setMiles] = React.useState(0)
   const[carolies,setCarolies] = React.useState(0)
   const[speed,setSpeed] = React.useState(0)
+  const[modalVisible,setModalVisible] = React.useState(false)
   React.useEffect(() => {
     if(!end){
     let myInterval = setInterval(() => {
@@ -113,6 +116,50 @@ export default function Article({
   // const[calories,setCarlories] = React.useState()
   return (
     <View>
+      {end && 
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          // Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+
+        
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+          <Text style={styles.modalText}>Congratulations!! </Text>
+            <Text style={styles.modalText}>Earned dollar : 0.3 HKD</Text>
+            {/* <Text>Price :</Text> */}
+            {/* <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable> */}
+
+            <View style={{ flexDirection: 'row' }}>
+              {/* <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => console.log('nice')}
+              >
+                <Text style={styles.textStyle}>Purchase</Text>
+              </Pressable> */}
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Close</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+            }
+
             <Banner
         visible={visible}
         // contentStyle={{justifyContent:'center',alignSelf:'center'}}
@@ -223,7 +270,7 @@ export default function Article({
           justifyContent: 'center',
         }}
         onPress={() => {
-          setEnd(!end), setVisible(true);
+          setEnd(!end), setVisible(true),setModalVisible(true);
         }}
         icon="run"
         color="purple"
@@ -550,4 +597,48 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 0.0,
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 2,
+      height: 4,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 10,
+    padding: 15,
+    marginLeft:10,
+    // paddingLeft:10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+
 });
