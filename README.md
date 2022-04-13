@@ -1,5 +1,7 @@
 # HackUST
-## windows:
+## internal testing (android):https://play.google.com/apps/internaltest/4701466447495174714
+
+## windows(hardcore):
 ### open command prompt
 ### command 1:git clone https://github.com/hans2001/hackust.git
 ### command 2:cd hackust
