@@ -1,4 +1,11 @@
 # HackUST
+
+###demo video
+
+
+https://user-images.githubusercontent.com/27507175/163315252-5a6ec73e-a2a3-4774-b38f-e54ae55deb3c.mp4
+
+
 <!-- ## internal teting (android):https://play.google.com/apps/internaltest/4701466447495174714 -->
 ## apk download : https://expo.dev/artifacts/488d7281-1de3-4343-aca4-2eaee861cd59
 ## windows(hardcore):
