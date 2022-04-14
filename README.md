@@ -14,8 +14,8 @@ https://user-images.githubusercontent.com/27507175/163315252-5a6ec73e-a2a3-4774-
 <!-- ### reminder : you might need to set up your android studio -->
 <!-- ### author : Hans -->
 
-<img src="https://user-images.githubusercontent.com/27507175/162921101-3ecfb8e2-bf04-43c8-8eeb-ba382766b13c.jpeg" width="500" height="600" />
-<img src="https://user-images.githubusercontent.com/27507175/162921112-984c94ba-fa5a-451f-9699-646e34df9669.jpeg" width="500" height="600" />
+<img src="https://user-images.githubusercontent.com/27507175/162921101-3ecfb8e2-bf04-43c8-8eeb-ba382766b13c.jpeg" width="400" height="600" />
+<img src="https://user-images.githubusercontent.com/27507175/162921112-984c94ba-fa5a-451f-9699-646e34df9669.jpeg" width="400" height="600" />
 <img src="https://user-images.githubusercontent.com/27507175/162921274-63a576fa-2cd1-4692-b919-d4857f397b17.jpeg" width="500" height="600" />
 <img src="https://user-images.githubusercontent.com/27507175/162921389-b6709e19-24d1-4f99-a202-81aa9bc54275.jpeg" width="500" height="600" />
 <img src="https://user-images.githubusercontent.com/27507175/162921649-9b0dfdb3-5b11-4986-83f6-e1b47a3c9b10.jpeg" width="500" height="600" />
