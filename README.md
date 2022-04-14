@@ -1,6 +1,6 @@
 # HackUST
-## internal testing (android):https://play.google.com/apps/internaltest/4701466447495174714
-
+<!-- ## internal teting (android):https://play.google.com/apps/internaltest/4701466447495174714 -->
+## apk download : https://expo.dev/artifacts/488d7281-1de3-4343-aca4-2eaee861cd59
 ## windows(hardcore):
 ### open command prompt
 ### command 1:git clone https://github.com/hans2001/hackust.git
