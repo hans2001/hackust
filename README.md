@@ -14,7 +14,7 @@ https://user-images.githubusercontent.com/27507175/163315252-5a6ec73e-a2a3-4774-
 <!-- ### reminder : you might need to set up your android studio -->
 <!-- ### author : Hans -->
 
-<img src="https://user-images.githubusercontent.com/27507175/162921101-3ecfb8e2-bf04-43c8-8eeb-ba382766b13c.jpeg" width="200" height="400" />
+<img src="https://user-images.githubusercontent.com/27507175/162921101-3ecfb8e2-bf04-43c8-8eeb-ba382766b13c.jpeg" width="500" height="600" />
 <!-- ![WhatsApp Image 2022-04-12 at 4 32 16 PM (1)](https://user-images.githubusercontent.com/27507175/162921101-3ecfb8e2-bf04-43c8-8eeb-ba382766b13c.jpeg) -->
 ![WhatsApp Image 2022-04-12 at 4 32 16 PM](https://user-images.githubusercontent.com/27507175/162921112-984c94ba-fa5a-451f-9699-646e34df9669.jpeg)
 ![WhatsApp Image 2022-04-11 at 6 15 26 PM](https://user-images.githubusercontent.com/27507175/162921274-63a576fa-2cd1-4692-b919-d4857f397b17.jpeg)
