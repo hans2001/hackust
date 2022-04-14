@@ -11,7 +11,8 @@ https://user-images.githubusercontent.com/27507175/163315252-5a6ec73e-a2a3-4774-
 ### command 3:cd example
 ### command 4:yarn
 ### command 5:expo start (press a when you see the QR code) 
-<!-- ### reminder : you might need to set up your android studio -->
+### reminder : you might need to set up your android studio
+### please choose dark mode and tab Real Potential
 <!-- ### author : Hans -->
 
 <img src="https://user-images.githubusercontent.com/27507175/162921101-3ecfb8e2-bf04-43c8-8eeb-ba382766b13c.jpeg" width="500" height="600" /> <img src="https://user-images.githubusercontent.com/27507175/162921112-984c94ba-fa5a-451f-9699-646e34df9669.jpeg" width="500" height="600" />
